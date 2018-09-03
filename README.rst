@@ -29,7 +29,16 @@ Add to urls:
 
 .. code-block:: python
 
-    url(r'^export_action/', include("export_action.urls", namespace="export_action")),
+    import export_action.urls
+
+
+    urlpatterns = [
+        ...
+        path('export_action/', (export_action.urls.urlpatterns, 'export_action', 'export_action')),
+    ]
+
+
+    # url(r'^export_action/', include("export_action.urls", namespace="export_action")),
 
 Usage
 -----
